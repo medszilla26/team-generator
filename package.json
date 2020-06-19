@@ -1,0 +1,28 @@
+{
+  "name": "team-generator",
+  "version": "1.0.0",
+  "description": "OOP and testing for Homework 10",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "inquirer": "^7.2.0",
+    "jest": "^26.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medszilla26/team-generator.git"
+  },
+  "author": "Pablo Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/medszilla26/team-generator/issues"
+  },
+  "homepage": "https://github.com/medszilla26/team-generator#readme"
+}
