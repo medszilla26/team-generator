@@ -60,7 +60,6 @@ function promptManager(name, id, email) {
     .then(function (data) {
       const manager = new Manager(name, id, email, data.office);
       team.push(manager);
-      renderHTML();
     });
 }
 
@@ -76,7 +75,6 @@ function promptEngineer(name, id, email) {
     .then(function (data) {
       const engineer = new Engineer(name, id, email, data.github);
       team.push(engineer);
-      renderHTML();
     });
 }
 
@@ -92,11 +90,8 @@ function promptIntern(name, id, email) {
     .then(function (data) {
       const intern = new Intern(name, id, email, data.school);
       team.push(intern);
-      renderHTML();
     });
 }
-
-console.log(team);
 
 prompt();
 // Write code to use inquirer to gather information about the development team members,
