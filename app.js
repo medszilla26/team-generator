@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+let team = [];
+
 function prompt() {
   inquirer
     .prompt([
@@ -47,34 +49,54 @@ function prompt() {
 }
 
 function promptManager(name, id, email) {
-  inquirer.prompt([
-    {
-      type: "input",
-      message: "What is your office number?",
-      name: "office",
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is your office number?",
+        name: "office",
+      },
+    ])
+    .then(function (data) {
+      const manager = new Manager(name, id, email, data.office);
+      team.push(manager);
+      renderHTML();
+    });
 }
 
 function promptEngineer(name, id, email) {
-  inquirer.prompt([
-    {
-      type: "input",
-      message: "What is your GitHub username?",
-      name: "github",
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is your GitHub username?",
+        name: "github",
+      },
+    ])
+    .then(function (data) {
+      const engineer = new Engineer(name, id, email, data.github);
+      team.push(engineer);
+      renderHTML();
+    });
 }
 
 function promptIntern(name, id, email) {
-  inquirer.prompt([
-    {
-      type: "input",
-      message: "What is your school name?",
-      name: "school",
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is your school name?",
+        name: "school",
+      },
+    ])
+    .then(function (data) {
+      const intern = new Intern(name, id, email, data.school);
+      team.push(intern);
+      renderHTML();
+    });
 }
+
+console.log(team);
 
 prompt();
 // Write code to use inquirer to gather information about the development team members,
