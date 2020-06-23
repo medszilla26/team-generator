@@ -11,26 +11,72 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 function prompt() {
-  return inquirer.prompt([
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Hello what is your name?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "What is your email?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "What is your employee ID?",
+        name: "id",
+      },
+      {
+        type: "list",
+        message: "What is your role?",
+        choices: ["Manager", "Engineer", "Intern"],
+        name: "role",
+      },
+    ])
+    .then(function (data) {
+      if (data.role === "Manager") {
+        promptManager(data.name, data.id, data.email);
+      } else if (data.role === "Engineer") {
+        promptEngineer(data.name, data.id, data.email);
+      } else if (data.role === "Intern") {
+        promptIntern(data.name, data.id, data.email);
+      }
+    });
+}
+
+function promptManager(name, id, email) {
+  inquirer.prompt([
     {
       type: "input",
-      message: "Hello what is your name?",
-      name: "name",
-    },
-    {
-      type: "input",
-      message: "What is your email?",
-      name: "email",
-    },
-    {
-      type: "input",
-      message: "What is your employee ID?",
-      name: "id",
+      message: "What is your office number?",
+      name: "office",
     },
   ]);
 }
-prompt();
 
+function promptEngineer(name, id, email) {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is your GitHub username?",
+      name: "github",
+    },
+  ]);
+}
+
+function promptIntern(name, id, email) {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is your school name?",
+      name: "school",
+    },
+  ]);
+}
+
+prompt();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
